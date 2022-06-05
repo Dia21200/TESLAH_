@@ -1,0 +1,83 @@
+{% extends "navbar.html" %}
+{% block title %}<title>Inscription</title>{% endblock %}
+{% block content %}
+<br><br>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<div class="col-sm-5 sidenav" >
+	<br><br><br><br><br><br><br><br><br>
+
+	<h2>INSCRIVEZ-VOUZ</h2>
+</div>
+<div class="container">
+
+	<div class="row justify-content-center">
+		<div class="col-md-7">
+			<div class="card" style="">
+				<header class="card-header" align="center" style="">
+				</header>
+				<div class="container-fluid text-left">
+					<article class="card-body" >
+						<form enctype="multipart/form-data" method="POST" >
+							{% csrf_token %}
+							<div class="form-row">
+								<div class="col form-group">
+									<label>Nom complet* </label>
+									{{ client_Form.nom}}
+								</div> <!-- form-group end.// -->
+								<div class="col form-group">
+									<label>Numéro de téléphone*</label>
+									{{ user_form.username}}
+								</div> <!-- form-group end.// -->
+							</div> <!-- form-row end.// -->
+
+							<div class="form-row">
+
+								<div class="form-group col-md-6" style="position:relative;left:-15px">
+									<label>Date de naissance*</label>
+									{{ client_Form.date_naissance}}
+								</div> <!-- form-group end.// -->
+
+								<div class="form-group col-md-6"style="position:relative;right:-15px">
+									<label>Adresse*</label>
+									{{ client_Form.adresse}}
+								</div> <!-- form-group end.// -->
+
+							</div> <!-- form-row.// -->
+
+							<div class="form-group">
+								<label>Genre*</label>
+								{{ client_Form.gender}}
+
+							</div> <!-- form-group end.// -->
+							<div class="form-group">
+								<label>Mot de passe*</label>
+								{{ user_form.password}}
+							</div> <!-- form-group end.// -->
+
+							<div class="form-group">
+								<label>Confirmation du mot de passe*</label>
+								{{ user_form.confirm_password}}
+							</div> <!-- form-group end.// -->
+
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block"> S'inscrire</button>
+							</div> <!-- form-group// -->
+						</form>
+					</article> <!-- card-body end .// -->
+				</div>
+				<div class="border-top card-body text-center">êtes vous dejà inscrit? <a href="{% url 'loginclient' %}">Je me
+					connecte</a></div>
+			</div> <!-- card.// -->
+		</div> <!-- col.//-->
+
+	</div> <!-- row.//-->
+
+
+</div>
+
+</article>
+{% endblock %}

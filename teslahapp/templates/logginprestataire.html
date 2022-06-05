@@ -1,0 +1,50 @@
+{% extends "navbar.html" %}
+
+{% block title %}<title>Connexion</title>{% endblock %}
+{% block content %}
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+<div class="container-fluid text-center">
+	<h3 class="mb-3">Je me connecte à mon espace professionnel</h3>
+</div>
+
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+
+	<div style="width:70%; position:relative;left:200px">
+		<br>
+		<br>
+		<div class="form-group">
+			<label for="input_id_0">Numéro de téléphone</label>
+			{{ form.username}}
+		</div>
+
+		<!-- Input type text -->
+		<div class="form-group">
+			<label for="input_id_1">Mot de passe</label>
+			{{ form.password}}
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-block" name="button_id_3" id="button_id_3">Se connecter
+		</button>
+
+	</div>
+
+</form>
+{% if messages %}
+	{% for message in messages %}
+	<strong style="font-width:40px">{{message}}</strong>
+	{% endfor %}
+	{% endif %}
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+{% endblock %}

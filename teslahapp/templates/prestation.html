@@ -1,0 +1,63 @@
+{% extends "navbar.html" %}
+{% block content %}
+{% block title %}<title>Prestation</title>{% endblock %}
+<br>
+
+<center><h3 class="mb-3">Prestation</h3></center>
+
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+
+	<div style="width:65%; position:relative;left:18%">
+		<div class="form-group">
+			<label for="u_name">Numéro de téléphone*</label>
+			{{ prestation.num_telephone}}
+		</div>
+
+		<!-- Input type text -->
+		<div class="form-group">
+			<label for="u_email">Adresse*</label>
+			{{ prestation.Adress}}
+		</div>
+
+		<!-- columns -->
+		<div class="form-group">
+			<div class="form-row align-items-center">
+				<div class="col-md-6 mb-3" style="position:relative;left:-15px">
+					<!-- Input type text -->
+					<label for="input_id_16">Domaine*</label>
+					{{ prestation.Service}}
+				</div>
+
+				<div class="col-md-6 mb-3" style="position:relative;right:-15px">
+					<!-- Input type text -->
+					<label for="input_id_17">type</label>
+					<input type="text" class="form-control" name="input_id_17" id="input_id_17" placeholder="">
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- textarea -->
+		<div class="form-group">
+			<label for="u_comment">Description*</label>
+			{{ prestation.Description}}
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-block" name="button_id_19" id="button_id_19">Valider</button>
+	</div>
+</form>
+<center>
+<div style="">
+{% if messages %}
+	{% for message in messages %}
+	<strong style="font-width:40px;color:blue">{{message}}</strong>
+	{% endfor %}
+	{% endif %}
+ </div>
+</center>
+<br><br><br><br>
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "navbar.html" %}
+
+{% load static %}
+{% block title %}
+<title>Payement</title>
+{% endblock %}
+{% block content %}
+
+
+  <style>
+
+  </style>
+
+<center><h1 class="text-dark"><b> Payement </b></h1><center>
+    <hr>
+    <br><br>
+
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div align="left" style="width:65%; position:relative;">
+        <div class="form-group">
+            <label >Numéro de téléphone*</label>
+             <input class="form-control" type="text" placeholder="Votre numéro téléphone ">
+        </div>
+
+                <div class="form-group">
+                    <div class="form-row align-items-center">
+                        <div class="col-md-6 mb-3" style="position:relative;left:-15px">
+                            <!-- Input type text -->
+                            <label for="input_id_16">Montant en MRU *</label>
+                            <input class="form-control" type="text" placeholder="">
+                        </div>
+
+                        <div class="col-md-6 mb-3" style="position:relative;right:-15px">
+                            <!-- Input type text -->
+                            <label for="input_id_17">Option</label>
+                            <input type="text" class="form-control" name="input_id_17" id="input_id_17" placeholder="">
+                            <br><br>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" name="button_id_19" id="button_id_19">Valider</button>
+    </div>
+</form>
+    <br><br><br>
+<div >
+    <div align="center" style="position:relative;margin-left:30%;margin-right:30%;">
+    <img src="..\static\banki.JPG" style="width:40%" class="img-radius " align="left" alt="User-Profile-Image">
+    <img src="..\static\masri.PNG" style="width:40%" class="img-radius" alt="User-Profile-Image" align="right">
+        <br><br>
+        <br><br>
+        <br><br>
+    </div>
+    <br>
+</div>
+
+{% endblock %}

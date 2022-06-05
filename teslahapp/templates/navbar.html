@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  {% block title %}{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../static/stt.css" rel="stylesheet">
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      transition: 0.4s;
+      margin-top: -22px;
+
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 0px;
+      background-color: #f1f1f1;
+      height: 100%;
+      background: white;
+      transition: 0.4s
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body style="background-color: white">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h7 class="navbar-brand" style="color:white"><b>TESLAH</b></h7>
+    </div>
+    <div class="nav navbar-nav navbar-right" id="myNavbar">
+      <ul class="nav navbar-nav" style="position:relative;right:1px">
+
+        {% if request.user.is_active %}
+        <li class="active"> <a href="{% url 'Compte_Client' %}">Mon compte</a> </li>
+        {% else %}
+        <li class="active"> <a href="{% url 'index' %}">Accueil</a> </li>
+        {% endif %}
+
+        {% if request.user.is_active %}
+            <li class=""> <a href="{% url 'prestation' %}">Prestation</a> </li>
+        {% else %}
+            <li class="nav-item"> <a href="{% url 'login_prestation' %}">Prestation</a> </li>
+        {% endif %}
+
+        {% if request.user.is_active %}
+          <li><a href="{% url 'lougout' %}"><span class="glyphicon glyphicon-log-in"></span> Se deconnecter</a></li>
+        {% else %}
+          <li><a href="{% url 'loginprestataire' %}"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+        {% endif %}
+          <li><a href="{% url 'A_propos' %}"><span class=""></span>À propos</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<main id="main" style="background-color: white">
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</main>
+<br>
+<footer class="container-fluid text-center">
+  <a href="{% url 'A_propos' %}">À propos</a>
+  <p>TESLAH © copyright 2022 Home Life. Tous droits réservés.<p>
+</footer>
+
+</body>
+</html>
+
