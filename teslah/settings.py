@@ -10,6 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os.path
+import django_heroku
+import dj_database_url
+from decouple import config
+
 from pathlib import Path
 from django.db.backends.mysql.base import DatabaseWrapper
 DatabaseWrapper.data_types['DateTimeField']='datetime'
@@ -54,7 +58,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
 
 ROOT_URLCONF = 'teslah.urls'
 
@@ -134,6 +140,8 @@ STATIC_URL = 'static/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 MEDIA_URL= 'media/'
 
+STATICFILES_STORAGE= 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -143,3 +151,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
  #   'django.contrib.auth.backends.ModelBackend',
   #  'phone_auth.backends.CustomAuthBackend',
 #]
+
+django_heroku.settings(locals())
